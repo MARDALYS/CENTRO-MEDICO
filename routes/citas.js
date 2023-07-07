@@ -5,7 +5,7 @@ const {conexion} = require('../database/conexion.js')
 /* Obtener citas medicas*/
 
 router.get('/', function(req, res, next) {
-  conexion.query('SELECT c.id, c.fecha, pa.nombre, med.nombres, med.consultorio FROM cita_medica c, pacientes pa, medicos med WHERE pa.cedula=id_paciente AND med.cedula=id_medico;', function(error, results) {
+  conexion.query('SELECT c.id, c.fecha, Pa.nombre, med.nombres, med.consultorio FROM cita_medica c, pacientes Pa, medicos med WHERE Pa.cedula=id_paciente AND med.cedula=id_medico;', function(error, results) {
     if (error) {
       console.log("Error en la consulta", error)
       res.status(500).send("Error en la consulta");
@@ -22,7 +22,7 @@ router.get('/agregar-cita', (req, res) =>{
 })
 
 router.post('/agregar', (req, res) =>{
-  const cedula = req.body.cedula;
+  const cedulaPaciente = req.body.cedula;
   const fecha = req.body.fecha;
   const especialidad = req.body.especialidad;
 
@@ -32,7 +32,7 @@ router.post('/agregar', (req, res) =>{
       res.status(500).send("Error en la consulta");
     }
       const cedulaMedico = results[0].cedula;
-      conexion.query(`INSERT INTO cita_medica (id_paciente, id_medico, fecha) VALUES (${cedula}, ${cedulaMedico}, '${fecha}')`, (error, result) => {
+      conexion.query(`INSERT INTO cita_medica (id_paciente, id_medico, fecha) VALUES (${cedulaPaciente}, ${cedulaMedico}, '${fecha}')`, (error, result) => {
         if (error) {
           console.log("Ocurrio un error en la ejecución", error)
           res.status(500).send("Error en la consulta");

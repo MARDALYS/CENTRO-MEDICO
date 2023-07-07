@@ -24,8 +24,9 @@
 <td><input id="correo" name="correo" value="{{correo}}" {{../opcion}}></td>
 <td>
 {{#if ../estado}}
-<a class="eliminar" href="medicos/eliminar/{{cedula}}">Eliminar</a>
-<a class="editar" href="/medicos/activar">Editar</a>
+<div class="botones"><a class="eliminar" href="medicos/eliminar/{{cedula}}">Eliminar</a>
+<a class="editar" href="/medicos/activar">Editar</a></div>
+
 {{else}}
 <input type="submit" value="Enviar">
 {{/if}}

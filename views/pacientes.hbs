@@ -22,8 +22,9 @@
 <td><input id="telefono" name="telefono" value="{{telefono}}" {{../opcion}}></td>
 <td>
 {{#if ../estado}}
-<a class="eliminar" href="pacientes/eliminar/{{cedula}}">Eliminar</a>
-<a class="editar" href="/pacientes/activar">Editar</a>
+<div class="botones"><a class="eliminar" href="pacientes/eliminar/{{cedula}}">Eliminar</a>
+<a class="editar" href="/pacientes/activar">Editar</a></div>
+
 {{else}}
 <input type="submit" value="Enviar">
 {{/if}}
